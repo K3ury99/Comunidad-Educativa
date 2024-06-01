@@ -21,5 +21,5 @@ Follow the instructions on the console to interact with the app and explore the 
 # Contributions 🎈
 Contributions are welcome. If you would like to contribute to this project, please open a pull request with your proposed changes.
 
-# License
+# License 📔
 This project is licensed under the MIT License.
