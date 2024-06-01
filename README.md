@@ -9,8 +9,8 @@ Filter and display members by categories: administrators, teachers, administrati
 Simple interaction through a console menu.
 
 # Used technology
-C#
-.NET Framework
+- C#
+- .NET Framework
 
 # How to use
 Clone the repository to your local machine.
