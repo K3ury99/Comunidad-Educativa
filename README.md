@@ -9,11 +9,6 @@
   - Customizable user profiles.
   - Roles and permissions for different user types (administrators, teachers, students).
 
-- **Course Module**
-  - Course creation and management.
-  - Student enrollment in courses.
-  - Assessments and tracking student progress.
-
 - **User Interface**
   - Responsive design for access from different devices.
   - Intuitive and easy-to-use navigation.
