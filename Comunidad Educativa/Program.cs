@@ -53,12 +53,16 @@ class Program
             Console.WriteLine("==================================");
             Console.WriteLine("      Comunidad Educativa.");
             Console.WriteLine("==================================");
-            Console.WriteLine(" 1. Mostrar Administradores");
-            Console.WriteLine(" 2. Mostrar Maestros");
-            Console.WriteLine(" 3. Mostrar Administrativos");
-            Console.WriteLine(" 4. Mostrar Estudiantes");
-            Console.WriteLine(" 5. Mostrar ExAlumnos");
-            Console.WriteLine(" 6. Salir");
+            Console.WriteLine(" 1. Agregar Nuevo Miembro");
+            Console.WriteLine(" 2. Mostrar Todos los Miembros");
+            Console.WriteLine(" 3. Buscar Miembro por Nombre");
+            Console.WriteLine(" 4. Mostrar Administradores");
+            Console.WriteLine(" 5. Mostrar Maestros");
+            Console.WriteLine(" 6. Mostrar Administrativos");
+            Console.WriteLine(" 7. Mostrar Estudiantes");
+            Console.WriteLine(" 8. Mostrar ExAlumnos");
+            Console.WriteLine(" 9. Eliminar Miembro");
+            Console.WriteLine("10. Salir");
             Console.WriteLine("==================================");
             Console.Write(" Seleccione una opción: ");
 
@@ -68,52 +72,49 @@ class Program
                 switch (opcion)
                 {
                     case 1:
-                        Console.WriteLine("\n==================================");
-                        Console.WriteLine("Administradores:");
-                        Console.WriteLine("==================================");
-                        MostrarMiembros<Administrador>(miembros);
+                        AgregarNuevoMiembro(miembros);
                         break;
                     case 2:
-                        Console.WriteLine("==================================");
-                        Console.WriteLine("Maestros:");
-                        Console.WriteLine("==================================");
-                        MostrarMiembros<Maestro>(miembros);
+                        MostrarTodosLosMiembros(miembros);
                         break;
                     case 3:
-                        Console.WriteLine("==================================");
-                        Console.WriteLine("Administrativos:");
-                        Console.WriteLine("==================================");
-                        MostrarMiembros<Administrativo>(miembros);
+                        BuscarMiembroPorNombre(miembros);
                         break;
                     case 4:
-                        Console.WriteLine("==================================");
-                        Console.WriteLine("Estudiantes:");
-                        Console.WriteLine("==================================");
-                        MostrarMiembros<Estudiante>(miembros);
+                        MostrarMiembros<Administrador>(miembros);
                         break;
                     case 5:
-                        Console.WriteLine("==================================");
-                        Console.WriteLine("ExAlumnos:");
-                        Console.WriteLine("==================================");
-                        MostrarMiembros<ExAlumno>(miembros);
+                        MostrarMiembros<Maestro>(miembros);
                         break;
                     case 6:
+                        MostrarMiembros<Administrativo>(miembros);
+                        break;
+                    case 7:
+                        MostrarMiembros<Estudiante>(miembros);
+                        break;
+                    case 8:
+                        MostrarMiembros<ExAlumno>(miembros);
+                        break;
+                    case 9:
+                        EliminarMiembro(miembros);
+                        break;
+                    case 10:
                         continuar = false;
                         break;
                     default:
-                        Console.WriteLine("Ingrese una opcion valida e intente de nuevo.");
+                        Console.WriteLine("Ingrese una opción válida e intente de nuevo.");
                         break;
                 }
                 Console.WriteLine("==================================");
                 if (continuar)
                 {
-                    Console.WriteLine("\nPresione cualquier tecla para salir del programa...");
+                    Console.WriteLine("\nPresione cualquier tecla para continuar...");
                     Console.ReadKey();
                 }
             }
             else
             {
-                Console.WriteLine("Ingrese una opcion valida e intente de nuevo.");
+                Console.WriteLine("Ingrese una opción válida e intente de nuevo.");
                 Console.ReadKey();
             }
         }
@@ -121,6 +122,9 @@ class Program
 
     static void MostrarMiembros<T>(List<MiembroDeLaComunidad> miembros) where T : MiembroDeLaComunidad
     {
+        Console.WriteLine($"\n==================================");
+        Console.WriteLine($"{typeof(T).Name}s:");
+        Console.WriteLine("==================================");
         foreach (var miembro in miembros)
         {
             if (miembro is T)
@@ -128,6 +132,114 @@ class Program
                 miembro.MostrarInformacion();
                 Console.WriteLine("----------------------------------");
             }
+        }
+    }
+
+    static void MostrarTodosLosMiembros(List<MiembroDeLaComunidad> miembros)
+    {
+        Console.WriteLine("\n==================================");
+        Console.WriteLine("     Todos los Miembros:");
+        Console.WriteLine("==================================\n");
+        foreach (var miembro in miembros)
+        {
+            miembro.MostrarInformacion();
+            Console.WriteLine("----------------------------------");
+        }
+    }
+
+    static void BuscarMiembroPorNombre(List<MiembroDeLaComunidad> miembros)
+    {
+        Console.WriteLine("\n==================================");
+        Console.Write("Ingrese el nombre del miembro a buscar: ");
+        string nombre = Console.ReadLine();
+        var miembroEncontrado = miembros.Find(m => m.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase));
+        if (miembroEncontrado != null)
+        {
+            Console.WriteLine("\nMiembro encontrado:");
+            miembroEncontrado.MostrarInformacion();
+        }
+        else
+        {
+            Console.WriteLine("\nMiembro no encontrado.");
+        }
+    }
+
+    static void AgregarNuevoMiembro(List<MiembroDeLaComunidad> miembros)
+    {
+        Console.WriteLine("==================================");
+        Console.WriteLine("\nSeleccione el tipo de miembro a agregar:");
+        Console.WriteLine("1. Administrador");
+        Console.WriteLine("2. Maestro");
+        Console.WriteLine("3. Administrativo");
+        Console.WriteLine("4. Estudiante");
+        Console.WriteLine("5. ExAlumno");
+        Console.WriteLine("6. Empleado");
+        Console.Write("Seleccione una opción: ");
+        int tipo;
+        if (int.TryParse(Console.ReadLine(), out tipo))
+        {
+            Console.Write("Ingrese el nombre: ");
+            string nombre = Console.ReadLine();
+            Console.Write("Ingrese la edad: ");
+            int edad = int.Parse(Console.ReadLine());
+
+            switch (tipo)
+            {
+                case 1:
+                    Console.Write("Ingrese el puesto: ");
+                    string puestoAdmin = Console.ReadLine();
+                    miembros.Add(new Administrador(nombre, edad, puestoAdmin));
+                    break;
+                case 2:
+                    Console.Write("Ingrese el puesto: ");
+                    string puestoMaestro = Console.ReadLine();
+                    miembros.Add(new Maestro(nombre, edad, puestoMaestro));
+                    break;
+                case 3:
+                    Console.Write("Ingrese el puesto: ");
+                    string puestoAdminis = Console.ReadLine();
+                    miembros.Add(new Administrativo(nombre, edad, puestoAdminis));
+                    break;
+                case 4:
+                    Console.Write("Ingrese la carrera: ");
+                    string carrera = Console.ReadLine();
+                    miembros.Add(new Estudiante(nombre, edad, carrera));
+                    break;
+                case 5:
+                    Console.Write("Ingrese el año de graduación: ");
+                    int anoGraduacion = int.Parse(Console.ReadLine());
+                    miembros.Add(new ExAlumno(nombre, edad, anoGraduacion));
+                    break;
+                case 6:
+                    Console.Write("Ingrese el puesto: ");
+                    string puestoEmpleado = Console.ReadLine();
+                    miembros.Add(new Empleado(nombre, edad, puestoEmpleado));
+                    break;
+                default:
+                    Console.WriteLine("Opción no válida.");
+                    break;
+            }
+        }
+        else
+        {
+            Console.WriteLine("Opción no válida.");
+        }
+    }
+
+    static void EliminarMiembro(List<MiembroDeLaComunidad> miembros)
+    {
+        Console.WriteLine("\n==================================");
+        Console.Write("Ingrese el nombre del miembro a eliminar: ");
+        string nombre = Console.ReadLine();
+        var miembroAEliminar = miembros.Find(m => m.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase));
+        if (miembroAEliminar != null)
+        {
+            miembros.Remove(miembroAEliminar);
+            Console.WriteLine("\nMiembro eliminado.");
+        }
+        else
+        {
+            Console.WriteLine("\nMiembro no encontrado.");
         }
     }
 }
