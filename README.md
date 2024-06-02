@@ -1,12 +1,48 @@
 # `Educational Community` 🏆
 "Educational Community" manages members of an educational institution. Developed in C# and .NET, it allows you to view and interact with administrators, teachers, administrators, students and alumni through a console interface, using object-oriented programming and lists.
 
-<img src="https://github.com/K3ury99/Comunidad-Educativa/assets/128008789/ea66fbb0-f1ee-4753-8438-1d4600a4618e" width="49%"></img>
+<img src="https://github.com/K3ury99/Comunidad-Educativa/assets/128008789/c92eda80-d5ac-42ce-a486-9c8184d8fab6" width="49%"></img>
 
 # `Features` 🍃
-View detailed information from community members.
-Filter and display members by categories: administrators, teachers, administrative staff, students and alumni.
-Simple interaction through a console menu.
+- **User System**
+  - User registration and authentication.
+  - Customizable user profiles.
+  - Roles and permissions for different user types (administrators, teachers, students).
+
+- **Course Module**
+  - Course creation and management.
+  - Student enrollment in courses.
+  - Assessments and tracking student progress.
+
+- **Discussion Forums**
+  - Spaces for thematic discussions.
+  - Content moderation by administrators and teachers.
+  - Notifications of new posts and replies.
+
+- **Educational Resources**
+  - Repository of educational materials.
+  - Upload and download files.
+  - Classification and search for resources by categories and tags.
+
+- **Events and Calendar**
+  - Scheduling of educational events.
+  - Synchronization with users' personal calendars.
+  - Reminders and notifications of upcoming events.
+
+- **User Interface**
+  - Responsive design for access from different devices.
+  - Intuitive and easy-to-use navigation.
+  - Themes and appearance customization.
+
+- **Security**
+  - Protection of personal data through encryption.
+  - Secure session management.
+  - Clear privacy policies and terms of use.
+
+- **Support and Documentation**
+  - Detailed user guide for students and teachers.
+  - Technical documentation for developers.
+  - Online help and support system.
 
 # `Used technology` ♟
 - C#
