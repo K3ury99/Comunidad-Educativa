@@ -1,4 +1,5 @@
 # `Educational Community` 🏆
+> [!NOTE]
 "Educational Community" manages members of an educational institution. Developed in C# and .NET, it allows you to view and interact with administrators, teachers, students and alumni through a console interface, using object-oriented programming and lists.
 
 <img src="https://github.com/K3ury99/Comunidad-Educativa/assets/128008789/c92eda80-d5ac-42ce-a486-9c8184d8fab6" width="49%"></img>
